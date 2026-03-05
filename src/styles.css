@@ -126,6 +126,31 @@ button:disabled {
     background: #000;
 }
 
+.leaderboard-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 1rem;
+    min-width: 220px;
+}
+
+.leaderboard-container h2 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.leaderboard-list {
+    margin-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.leaderboard-list li {
+    font-size: 0.95rem;
+    line-height: 1.2;
+}
+
 .instructions {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);

@@ -1,11 +1,12 @@
 // index.js - 主程式入口
 import './styles.css';
 import { Game } from './Game';
-import { TETROMINO_TYPES } from './Tetromino';
+import { ScoreBoard } from './ScoreBoard';
 
 class TetrisGame {
   constructor() {
     this.game = new Game();
+    this.scoreBoard = new ScoreBoard();
     this.canvas = document.getElementById('tetris');
     this.nextCanvas = document.getElementById('next-piece');
     this.ctx = this.canvas.getContext('2d');
@@ -17,6 +18,7 @@ class TetrisGame {
     
     this.initControls();
     this.initKeyboard();
+    this.renderLeaderBoard();
   }
 
   initControls() {
@@ -211,7 +213,27 @@ class TetrisGame {
     document.getElementById('lines').textContent = this.game.lines;
   }
 
+  renderLeaderBoard() {
+    const listEl = document.getElementById('leaderboard');
+    const scores = this.scoreBoard.getScores();
+
+    if (scores.length === 0) {
+      listEl.innerHTML = '<li>尚無紀錄</li>';
+      return;
+    }
+
+    listEl.innerHTML = scores
+      .map((item) => {
+        const date = new Date(item.date).toLocaleDateString('zh-TW');
+        return `<li>${item.score} 分 - ${date}</li>`;
+      })
+      .join('');
+  }
+
   handleGameOver() {
+    this.scoreBoard.saveScore(this.game.score);
+    this.renderLeaderBoard();
+
     this.ctx.fillStyle = 'rgba(0, 0, 0, 0.75)';
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     

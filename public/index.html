@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>俄羅斯方塊遊戲</title>
+</head>
+<body>
+    <div class="container">
+        <h1>俄羅斯方塊</h1>
+        <div class="game-wrapper">
+            <div class="game-info">
+                <div class="score-board">
+                    <h2>分數</h2>
+                    <p id="score">0</p>
+                </div>
+                <div class="level-board">
+                    <h2>等級</h2>
+                    <p id="level">1</p>
+                </div>
+                <div class="lines-board">
+                    <h2>消除行數</h2>
+                    <p id="lines">0</p>
+                </div>
+            </div>
+            <div class="game-container">
+                <canvas id="tetris" width="240" height="480"></canvas>
+                <div class="game-controls">
+                    <button id="start-btn">開始遊戲</button>
+                    <button id="pause-btn" disabled>暫停</button>
+                    <button id="restart-btn">重新開始</button>
+                </div>
+            </div>
+            <div class="next-piece-container">
+                <h2>下一個方塊</h2>
+                <canvas id="next-piece" width="120" height="120"></canvas>
+            </div>
+        </div>
+        <div class="instructions">
+            <h3>操作說明</h3>
+            <ul>
+                <li>← → 左右移動</li>
+                <li>↓ 快速下落</li>
+                <li>↑ 或 空白鍵 旋轉方塊</li>
+                <li>P 暫停/繼續</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
